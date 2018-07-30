@@ -35,3 +35,13 @@ And render `NProgressStyles` inside your App container or [layout component](htt
 ```
 
 That's it. Now NProgress will work automatically and will render the correct styles using styled-jsx.
+
+### Advanced Config
+
+By passing an object as an optional second argument, you can configure further configure NProgress using it's [configuration options].
+
+```js
+const msDelay = 200;
+const configOptions = { trickleSpeed: 50 };
+export default withNProgress(msDelay, configOptions)(MyApp);
+```
