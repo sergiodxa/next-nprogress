@@ -38,7 +38,7 @@ That's it. Now NProgress will work automatically and will render the correct sty
 
 ### Advanced Config
 
-By passing an object as an optional second argument, you can configure further configure NProgress using it's [configuration options].
+By passing an object as an optional second argument, you can configure further configure NProgress using it's [configuration options](https://github.com/rstacruz/nprogress#configuration).
 
 ```js
 const msDelay = 200;
