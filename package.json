@@ -31,6 +31,6 @@
     "babel-preset-minify": "0.4.3",
     "babel-preset-react": "6.24.1",
     "next": "6.1.1",
-    "react": "16.4.1"
+    "react": "16.4.2"
   }
 }
