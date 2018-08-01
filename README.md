@@ -30,7 +30,18 @@ And render `NProgressStyles` inside your App container or [layout component](htt
 
 ```js
 // the default progress bar and spinner color is #29d, it could be changed for any CSS color
-<NProgressStyles color="#29d" />
+// Also, the default is to show the spinner, but that can be turned off.
+<NProgressStyles color="#29d" spinner={false} />
 ```
 
 That's it. Now NProgress will work automatically and will render the correct styles using styled-jsx.
+
+### Advanced Config
+
+You can configure further configure NProgress using its [configuration options](https://github.com/rstacruz/nprogress#configuration) by passing an object as an optional second argument.
+
+```js
+const msDelay = 200;
+const configOptions = { trickleSpeed: 50 };
+export default withNProgress(msDelay, configOptions)(MyApp);
+```

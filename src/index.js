@@ -21,9 +21,10 @@ Router.onRouteChangeError = () => {
   clearTimeout(timer);
 };
 
-export default (_delayMs = delayMs) => {
+export default (_delayMs = delayMs, configOptions) => {
   delayMs = _delayMs;
-
+  // configure NProgress if configuration object is passed
+  if (configOptions) NProgress.configure(configOptions);
   // receive page and return it as is
   return Page => Page;
 };
