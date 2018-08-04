@@ -23,7 +23,7 @@
   "peerDependencies": {
     "next": "^6.0.0",
     "react": "^16.0.0",
-    "styled-jsx": "^2.0.0"
+    "styled-jsx": "^2.0.0 || ^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
