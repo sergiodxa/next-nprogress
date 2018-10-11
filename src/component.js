@@ -15,26 +15,23 @@ class NProgressContainer extends React.Component {
     }
 
     Router.onRouteChangeStart = () => {
-      this.clearTimer();
+      clearTimeout(this.timer);
       this.timer = setTimeout(NProgress.start, this.props.showAfterMs || 300);
     };
 
     Router.onRouteChangeComplete = () => {
+      clearTimeout(this.timer);
       NProgress.done();
-      this.clearTimer();
     };
 
     Router.onRouteChangeError = () => {
+      clearTimeout(this.timer);
       NProgress.done();
-      this.clearTimer();
     };
   }
 
-  clearTimer () {
-    if (this.timer) {
-      clearTimeout(this.timer);
-      this.timer = null;
-    }
+  componentWillUnmount () {
+    clearTimeout(this.timer);
   }
 
   render () {
