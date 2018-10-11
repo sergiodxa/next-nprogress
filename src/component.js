@@ -1,6 +1,6 @@
 import React from "react";
 import NProgress from "nprogress";
-import Router from "next/router";
+import { withRouter } from "next/router";
 import NProgressStyles from "./styles";
 
 class NProgressContainer extends React.Component {
@@ -10,21 +10,23 @@ class NProgressContainer extends React.Component {
   }
 
   componentDidMount () {
-    if (this.props.nprogressOptions) {
-      NProgress.configure(this.props.nprogressOptions);
+    const { nprogressOptions, router, showAfterMs = 300 } = this.props;
+
+    if (nprogressOptions) {
+      NProgress.configure(nprogressOptions);
     }
 
-    Router.onRouteChangeStart = () => {
+    router.onRouteChangeStart = () => {
       clearTimeout(this.timer);
-      this.timer = setTimeout(NProgress.start, this.props.showAfterMs || 300);
+      this.timer = setTimeout(NProgress.start, showAfterMs);
     };
 
-    Router.onRouteChangeComplete = () => {
+    router.onRouteChangeComplete = () => {
       clearTimeout(this.timer);
       NProgress.done();
     };
 
-    Router.onRouteChangeError = () => {
+    router.onRouteChangeError = () => {
       clearTimeout(this.timer);
       NProgress.done();
     };
@@ -42,4 +44,4 @@ class NProgressContainer extends React.Component {
   }
 }
 
-export default NProgressContainer;
+export default withRouter(NProgressContainer);
