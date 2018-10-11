@@ -20,15 +20,13 @@ Import it inside your `pages/_app.js`;
 import NProgress from "next-nprogress/component";
 ```
 
-Wrap the page content in your [custom App container](https://nextjs.org/docs#custom-%3Capp%3E) in it:
+Render the component in your [custom App container](https://nextjs.org/docs#custom-%3Capp%3E):
 
 ```jsx
-<NProgress>
-  {pageContent}
-</NProgress>
+<NProgress />
 ```
 
-That's it. Now NProgress will work automatically and will render the correct styles using styled-jsx.
+That's it. Now NProgress will work automatically and render the correct styles using styled-jsx.
 
 ### Higher order component
 
@@ -61,9 +59,12 @@ You can configure further configure NProgress using its [configuration options](
 Configure the component:
 
 ```jsx
-<NProgress color="#29d" nprogressOptions={{ trickleSpeed: 50 }} showAfterMs={300} spinner>
-  {pageContent}
-</NProgress>
+<NProgress
+  color="#29d"
+  nprogressOptions={{ trickleSpeed: 50 }}
+  showAfterMs={300}
+  spinner
+/>
 ```
 
 Configure the HOC:

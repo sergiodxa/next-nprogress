@@ -40,10 +40,7 @@ class NProgressContainer extends React.Component {
   render () {
     const { color = "#29d", spinner = true } = this.props;
     return (
-      <React.Fragment>
-        <NProgressStyles color={color} spinner={spinner} />
-        {this.props.children}
-      </React.Fragment>
+      <NProgressStyles color={color} spinner={spinner} />
     );
   }
 }
