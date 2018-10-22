@@ -34,23 +34,16 @@ Import it inside your `pages/_app.js`;
 
 ```js
 import withNProgress from "next-nprogress";
-import NProgressStyles from "next-nprogress/styles";
 ```
 
 Wrap your [custom App container](https://nextjs.org/docs#custom-%3Capp%3E) with it
 
 ```js
-const msDelay = 300; // default is 300
+const msDelay = 1000; // default is 300
 export default withNProgress(msDelay)(MyApp);
 ```
 
-And render `NProgressStyles` inside your App container or [layout component](https://github.com/zeit/next.js/tree/canary/examples/layout-component)
-
-```js
-// the default progress bar and spinner color is #29d, it could be changed for any CSS color
-// Also, the default is to show the spinner, but that can be turned off.
-<NProgressStyles color="#29d" spinner={false} />
-```
+Internally it will use the NProgress component and render it alongside your application.
 
 ### Advanced Config
 
@@ -61,7 +54,7 @@ Configure the component:
 ```jsx
 <NProgress
   color="#29d"
-  nprogressOptions={{ trickleSpeed: 50 }}
+  options={{ trickleSpeed: 50 }}
   showAfterMs={300}
   spinner
 />
@@ -71,6 +64,6 @@ Configure the HOC:
 
 ```js
 const msDelay = 200;
-const configOptions = { trickleSpeed: 50 };
-export default withNProgress(msDelay, configOptions)(MyApp);
+const options = { trickleSpeed: 50 };
+export default withNProgress(msDelay, options)(MyApp);
 ```
