@@ -4,29 +4,44 @@ import { withRouter } from "next/router";
 import NProgressStyles from "./styles";
 
 class NProgressContainer extends React.Component {
-  constructor (props) {
-    super(props)
-    this.timer = null;
-  }
+  static defaultProps = {
+    color: "#2299DD",
+    showAfterMs: 300,
+    spinner: true
+  };
+
+  timer = null;
 
   componentDidMount () {
-    const { nprogressOptions, router, showAfterMs = 300 } = this.props;
+    const { options, router, showAfterMs } = this.props;
 
-    if (nprogressOptions) {
-      NProgress.configure(nprogressOptions);
+    if (options) {
+      NProgress.configure(options);
     }
 
+    const previousChangeStartCallback = Router.onRouteChangeStart
+    const previousChangeCompleteCallback = Router.onRouteChangeComplete
+    const previousChangeErrorCallback = Router.onRouteChangeError
     router.onRouteChangeStart = () => {
+      if (typeof previousChangeStartCallback === "function") {
+        previousChangeStartCallback();
+      }
       clearTimeout(this.timer);
       this.timer = setTimeout(NProgress.start, showAfterMs);
     };
 
     router.onRouteChangeComplete = () => {
+      if (typeof previousChangeCompleteCallback === "function") {
+        previousChangeCompleteCallback();
+      }
       clearTimeout(this.timer);
       NProgress.done();
     };
 
     router.onRouteChangeError = () => {
+      if (typeof previousChangeErrorCallback === "function") {
+        previousChangeErrorCallback();
+      }
       clearTimeout(this.timer);
       NProgress.done();
     };
@@ -37,7 +52,7 @@ class NProgressContainer extends React.Component {
   }
 
   render () {
-    const { color = "#29d", spinner = true } = this.props;
+    const { color, spinner } = this.props;
     return (
       <NProgressStyles color={color} spinner={spinner} />
     );
