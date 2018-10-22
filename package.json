@@ -26,19 +26,19 @@
     "styled-jsx": "^2.0.0 || ^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/cli": "7.1.2",
+    "@babel/core": "7.1.2",
+    "@babel/plugin-proposal-class-properties": "7.1.0",
+    "@babel/preset-env": "7.1.0",
+    "@babel/preset-react": "7.0.0",
     "babel-preset-minify": "0.5.0",
-    "eslint": "^5.7.0",
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "eslint-plugin-react": "^7.11.1",
-    "eslint-plugin-unicorn": "^6.0.1",
+    "eslint": "5.7.0",
+    "eslint-config-prettier": "3.1.0",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-unicorn": "6.0.1",
     "next": "7.0.2",
-    "prettier": "^1.14.3",
+    "prettier": "1.14.3",
     "react": "16.5.2"
   }
 }
