@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import NProgress from "./component";
 
 export default (delayMs, options) => Page =>
