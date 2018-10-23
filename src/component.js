@@ -1,6 +1,6 @@
 import React from "react";
 import NProgress from "nprogress";
-import { withRouter } from "next/router";
+import Router from "next/router";
 
 class NProgressContainer extends React.Component {
   static defaultProps = {
@@ -12,7 +12,7 @@ class NProgressContainer extends React.Component {
   timer = null;
 
   componentDidMount() {
-    const { options, router, showAfterMs } = this.props;
+    const { options, showAfterMs } = this.props;
 
     if (options) {
       NProgress.configure(options);
@@ -21,7 +21,7 @@ class NProgressContainer extends React.Component {
     const previousChangeStartCallback = Router.onRouteChangeStart;
     const previousChangeCompleteCallback = Router.onRouteChangeComplete;
     const previousChangeErrorCallback = Router.onRouteChangeError;
-    router.onRouteChangeStart = () => {
+    Router.onRouteChangeStart = () => {
       if (typeof previousChangeStartCallback === "function") {
         previousChangeStartCallback();
       }
@@ -29,7 +29,7 @@ class NProgressContainer extends React.Component {
       this.timer = setTimeout(NProgress.start, showAfterMs);
     };
 
-    router.onRouteChangeComplete = () => {
+    Router.onRouteChangeComplete = () => {
       if (typeof previousChangeCompleteCallback === "function") {
         previousChangeCompleteCallback();
       }
@@ -37,7 +37,7 @@ class NProgressContainer extends React.Component {
       NProgress.done();
     };
 
-    router.onRouteChangeError = () => {
+    Router.onRouteChangeError = () => {
       if (typeof previousChangeErrorCallback === "function") {
         previousChangeErrorCallback();
       }
@@ -138,4 +138,4 @@ class NProgressContainer extends React.Component {
   }
 }
 
-export default withRouter(NProgressContainer);
+export default NProgressContainer;
