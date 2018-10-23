@@ -7,7 +7,7 @@ export default (delayMs, options) => Page =>
     render() {
       return (
         <>
-          <Page {...props} />
+          <Page {...this.props} />
           <NProgress delayMs={delayMs} options={options} />
         </>
       );
