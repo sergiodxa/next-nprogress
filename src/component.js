@@ -1,6 +1,6 @@
 import React from "react";
 import NProgress from "nprogress";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
 
 class NProgressContainer extends React.Component {
   static defaultProps = {
