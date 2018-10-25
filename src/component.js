@@ -18,9 +18,9 @@ class NProgressContainer extends React.Component {
       NProgress.configure(options);
     }
 
-    const previousChangeStartCallback = Router.onRouteChangeStart;
-    const previousChangeCompleteCallback = Router.onRouteChangeComplete;
-    const previousChangeErrorCallback = Router.onRouteChangeError;
+    const previousChangeStartCallback = router.onRouteChangeStart;
+    const previousChangeCompleteCallback = router.onRouteChangeComplete;
+    const previousChangeErrorCallback = router.onRouteChangeError;
     router.onRouteChangeStart = () => {
       if (typeof previousChangeStartCallback === "function") {
         previousChangeStartCallback();
