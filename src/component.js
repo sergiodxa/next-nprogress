@@ -11,6 +11,17 @@ class NProgressContainer extends React.Component {
 
   timer = null;
 
+  routeChangeStart = () => {
+    const { showAfterMs } = this.props;
+    clearTimeout(this.timer);
+    this.timer = setTimeout(NProgress.start, showAfterMs);
+  }
+
+  routeChangeEnd = () => {
+    clearTimeout(this.timer);
+    NProgress.done();
+  }
+
   componentDidMount() {
     const { options, router, showAfterMs } = this.props;
 
@@ -18,24 +29,16 @@ class NProgressContainer extends React.Component {
       NProgress.configure(options);
     }
 
-    router.events.on('routeChangeStart', () => {
-      clearTimeout(this.timer);
-      this.timer = setTimeout(NProgress.start, showAfterMs);
-    });
-
-    router.events.on('routeChangeComplete', () => {
-      clearTimeout(this.timer);
-      NProgress.done();
-    });
-
-    router.events.on('routeChangeError', () => {
-      clearTimeout(this.timer);
-      NProgress.done();
-    });
+    router.events.on('routeChangeStart', this.routeChangeStart);
+    router.events.on('routeChangeComplete', this.routeChangeEnd);
+    router.events.on('routeChangeError', this.routeChangeEnd);
   }
 
   componentWillUnmount() {
     clearTimeout(this.timer);
+    router.events.off('routeChangeStart', this.routeChangeStart);
+    router.events.off('routeChangeComplete', this.routeChangeEnd);
+    router.events.off('routeChangeError', this.routeChangeEnd);
   }
 
   render() {
