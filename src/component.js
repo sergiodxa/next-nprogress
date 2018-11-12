@@ -23,7 +23,7 @@ class NProgressContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { options, router, showAfterMs } = this.props;
+    const { options, router } = this.props;
 
     if (options) {
       NProgress.configure(options);
