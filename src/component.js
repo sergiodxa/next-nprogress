@@ -18,32 +18,20 @@ class NProgressContainer extends React.Component {
       NProgress.configure(options);
     }
 
-    const previousChangeStartCallback = router.onRouteChangeStart;
-    const previousChangeCompleteCallback = router.onRouteChangeComplete;
-    const previousChangeErrorCallback = router.onRouteChangeError;
-    router.onRouteChangeStart = () => {
-      if (typeof previousChangeStartCallback === "function") {
-        previousChangeStartCallback();
-      }
+    router.events.on('routeChangeStart', () => {
       clearTimeout(this.timer);
       this.timer = setTimeout(NProgress.start, showAfterMs);
-    };
+    });
 
-    router.onRouteChangeComplete = () => {
-      if (typeof previousChangeCompleteCallback === "function") {
-        previousChangeCompleteCallback();
-      }
+    router.events.on('routeChangeComplete', () => {
       clearTimeout(this.timer);
       NProgress.done();
-    };
+    });
 
-    router.onRouteChangeError = () => {
-      if (typeof previousChangeErrorCallback === "function") {
-        previousChangeErrorCallback();
-      }
+    router.events.on('routeChangeError', () => {
       clearTimeout(this.timer);
       NProgress.done();
-    };
+    });
   }
 
   componentWillUnmount() {
