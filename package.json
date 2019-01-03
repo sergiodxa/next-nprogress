@@ -35,7 +35,7 @@
     "eslint": "5.11.1",
     "eslint-config-prettier": "3.3.0",
     "eslint-plugin-prettier": "3.0.1",
-    "eslint-plugin-react": "7.12.1",
+    "eslint-plugin-react": "7.12.2",
     "eslint-plugin-unicorn": "6.0.1",
     "next": "7.0.2",
     "prettier": "1.15.3",
