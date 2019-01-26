@@ -4,6 +4,10 @@ Next.js HOC to integrate NProgress inside your app.
 
 This is configured to run only after a delay of (default) 300ms. This means if the page change takes too long it will render the progress bar, but if it's fast enough it will avoid rendering it.
 
+<a href="https://www.patreon.com/sergiodxa">
+	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
 ## Installation
 
 ```bash
