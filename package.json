@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "babel src -d dist",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "dependencies": {
     "nprogress": "^0.2.0"
