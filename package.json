@@ -39,6 +39,6 @@
     "eslint-plugin-unicorn": "7.1.0",
     "next": "7.0.3",
     "prettier": "1.16.4",
-    "react": "16.8.2"
+    "react": "16.8.3"
   }
 }
